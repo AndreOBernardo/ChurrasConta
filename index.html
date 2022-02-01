@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/dumnWMq.png">
+    <title>ChurrasConta</title>
+
+<style>
+
+/* Importando fonte */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+/* Totalidade do display */
+*{
+margin:0;
+padding:0;
+box-sizing: border-box;
+font-family: "Audiowide", sans-serif;
+}
+
+/* vídeo background */
+video {
+position: fixed;
+right: 0;
+bottom: 0;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+background-size: cover;
+z-index: -1;
+}
+
+/* corpo da tela */
+.container {
+width: 100vw;
+height: 100vh;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+text-align: center;  
+}
+
+/* painel */
+.box {
+width: 400px;
+height: 450px; 
+position:relative;
+border-width: 25px;
+border-style: outset;
+background-color: lightgray;
+backdrop-filter: blur(5px) saturate(100%);
+-webkit-backdrop-filter: blur(5px) saturate(100%);
+background-color: rgba(255, 255, 255, 0.04);
+border: 1px solid rgba(255, 255, 255, 0.125);
+border-radius: 15px;
+/* responsividade da box */
+max-width:70%;
+max-height:70%;
+
+}
+
+/* painel visualizado */
+.box:hover{
+-webkit-box-shadow: 0px 0px 10px 4px rgba(214,34,10,0.5), 0px 0px 2.5px 1px rgba(231,166,26,1);
+-moz-box-shadow: 0px 0px 10px 4px rgba(214,34,10,0.5), 0px 0px 2.5px 1px rgba(231,166,26,1);
+box-shadow: 0px 0px 10px 4px rgba(214,34,10,0.5), 0px 0px 2.55px 1px rgba(231,166,26,1);
+transition: 1s;
+}
+
+/* título do quadro */
+h1 {
+color: #572419 ;
+text-shadow: #FFAC28 4px 4px 7px;
+text-align: center;
+position: relative;
+margin:40px;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+justify-content: center;
+/* responsividade do título */
+font-size: max(35px, 3vw);
+
+}
+
+/* entradas */
+input{
+position: relative;
+width: 60%;
+display:block;
+margin: 10px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 10px;
+padding: 5px;
+border-radius: 8px;
+text-align: center;
+}
+
+/* mouse sobre entradas */
+input:hover {
+    -webkit-box-shadow: 0px 0px 10px 4px rgba(214,34,10,0.5), 0px 0px 0.5px 0.2px rgba(231,166,26,1);
+-moz-box-shadow: 0px 0px 10px 4px rgba(214,34,10,0.5), 0px 0px 0.5px 0.2px rgba(231,166,26,1);
+box-shadow: 0px 0px 10px 4px rgba(214,34,10,0.5), 0px 0px 0.5px 0.2px rgba(231,166,26,1);
+transition: 0.5s;
+}
+
+/*  borda da input ao inserir dados  */
+input:focus {
+outline: 0;
+
+}
+
+/* placeholder e edição do texto das inputs */
+#adultos, #criancas, #duracao {
+backdrop-filter: blur(10px) saturate(100%);
+-webkit-backdrop-filter: blur(10px) saturate(100%);
+background-color: rgba(255, 255, 255, 0);
+border: 1px solid rgba(255, 255, 255, 0.125);
+color: #572419;
+text-shadow: #FFAC28 1px 1px 2px;
+
+}
+
+/* botão calcular */
+button {
+display: flex;
+color:  #572419;
+text-shadow: #FFAC28 1px 1px 2px;
+margin-top: 35px; 
+margin-left: auto;
+margin-right: auto;   
+padding: 5px;
+font-size: 12px;
+border: 1px solid rgba(0, 0, 0, 0.0);
+border-radius: 8.5px;
+-webkit-box-shadow: 0px 0px 10px 3px rgba(214,34,10,0.5), 0px 0px 5px 0.5px rgba(231,166,26,1);
+-moz-box-shadow: 0px 0px 10px 3px rgba(214,34,10,0.5), 0px 0px 5px 0.5px rgba(231,166,26,1);
+box-shadow: 0px 0px 10px 3px rgba(214,34,10,0.5), 0px 0px 5px 0.5px rgba(231,166,26,1);
+text-align: center;
+justify-content: center;
+backdrop-filter: blur(5px) saturate(100%);
+-webkit-backdrop-filter: blur(5px) saturate(100%);
+background-color: rgba(255, 255, 255, 0.05);
+transition: 0.5s;
+max-width:30%;
+max-height:30%; 
+}
+
+/* botão visualizado */
+button:hover {
+-webkit-box-shadow: 0px 0px 10px 3px rgba(214,34,10,0.5), 0px 0px 5px 2px rgba(231,166,26,1);
+-moz-box-shadow: 0px 0px 10px 3px rgba(214,34,10,0.5), 0px 0px 5px 2px rgba(231,166,26,1);
+box-shadow: 0px 0px 10px 3px rgba(214,34,10,0.5), 0px 0px 5px 2px rgba(231,166,26,1);
+}
+
+/* botão quando clicado */
+button:active {
+-webkit-box-shadow: 0px 0px 10px 6px rgba(214,34,10,0.5), 0px 0px 10px 1.5px rgba(231,166,26,1) inset;
+-moz-box-shadow: 0px 0px 10px 6px rgba(214,34,10,0.5), 0px 0px 10px 1.5px rgba(231,166,26,1) inset;
+box-shadow: 0px 0px 10px 6px rgba(214,34,10,0.5), 0px 0px 10px 1.5px rgba(231,166,26,1) inset;
+}
+
+/* resultado do cálculo */
+#resultado{
+color:  #572419;
+text-shadow: #FFAC28 1px 1px 2px;
+margin: 30px;
+transition: 1s; 
+}
+
+
+@media screen and (max-width: 1200px) {
+
+.box {
+width: 350px;
+height: 400px; 
+position:absolute;
+border-width: 3px;
+
+
+}
+
+@media screen and (max-width: 900px) {
+
+.box {
+width: 300px;
+height: 400px; 
+position:absolute;
+border-width: 3px;
+
+
+}
+
+}    
+
+</style>
+
+</head>
+<body>
+
+<video autoplay muted loop >
+    <source src="https://i.imgur.com/JzGHRxM.mp4"  type="video/mp4">
+</video>  
+
+ 
+<div class="container">
+    
+    <div class="box">
+        <h1>Churrasconta</h1>
+            <input class="adulto" id= "adultos" name= "adultos" type= "number" placeholder="adultos" >        
+            <input id= "criancas" name= "criancas" type= "number" placeholder="crianças" >
+            <input id= "duracao" name= "duracao" type= "number" placeholder="duração (h)" >
+            <i class="fas fa-clock"></i>
+
+            <button  onclick="calcular()">Calcular</button>
+
+        <div id="resultado"> 
+
+        </div> 
+    </div>  
+</div>
+ 
+
+<script> 
+    /*! modernizr 3.6.0 (Custom Build) | MIT *
+     * https://modernizr.com/download/?-backdropfilter-setclasses !*/
+     !function(e,n,t){function r(e){var n=_.className,t=Modernizr._config.classPrefix||"";if(b&&(n=n.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),b?_.className.baseVal=n:_.className=n)}function o(e,n){return typeof e===n}function s(){var e,n,t,r,s,i,l;for(var a in S)if(S.hasOwnProperty(a)){if(e=[],n=S[a],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(r=o(n.fn,"function")?n.fn():n.fn,s=0;s<e.length;s++)i=e[s],l=i.split("."),1===l.length?Modernizr[l[0]]=r:(!Modernizr[l[0]]||Modernizr[l[0]]instanceof Boolean||(Modernizr[l[0]]=new Boolean(Modernizr[l[0]])),Modernizr[l[0]][l[1]]=r),C.push((r?"":"no-")+l.join("-"))}}function i(e,n){return!!~(""+e).indexOf(n)}function l(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):b?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function a(e,n){return function(){return e.apply(n,arguments)}}function f(e,n,t){var r;for(var s in e)if(e[s]in n)return t===!1?e[s]:(r=n[e[s]],o(r,"function")?a(r,t||n):r);return!1}function u(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function c(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function d(n,t,r){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,n,t);var s=e.console;if(null!==o)r&&(o=o.getPropertyValue(r));else if(s){var i=s.error?"error":"log";s[i].call(s,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!t&&n.currentStyle&&n.currentStyle[r];return o}function p(){var e=n.body;return e||(e=l(b?"svg":"body"),e.fake=!0),e}function m(e,t,r,o){var s,i,a,f,u="modernizr",c=l("div"),d=p();if(parseInt(r,10))for(;r--;)a=l("div"),a.id=o?o[r]:u+(r+1),c.appendChild(a);return s=l("style"),s.type="text/css",s.id="s"+u,(d.fake?d:c).appendChild(s),d.appendChild(c),s.styleSheet?s.styleSheet.cssText=e:s.appendChild(n.createTextNode(e)),c.id=u,d.fake&&(d.style.background="",d.style.overflow="hidden",f=_.style.overflow,_.style.overflow="hidden",_.appendChild(d)),i=t(c,e),d.fake?(d.parentNode.removeChild(d),_.style.overflow=f,_.offsetHeight):c.parentNode.removeChild(c),!!i}function y(n,r){var o=n.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(c(n[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var s=[];o--;)s.push("("+c(n[o])+":"+r+")");return s=s.join(" or "),m("@supports ("+s+") { #modernizr { position: absolute; } }",function(e){return"absolute"==d(e,null,"position")})}return t}function v(e,n,r,s){function a(){c&&(delete N.style,delete N.modElem)}if(s=o(s,"undefined")?!1:s,!o(r,"undefined")){var f=y(e,r);if(!o(f,"undefined"))return f}for(var c,d,p,m,v,g=["modernizr","tspan","samp"];!N.style&&g.length;)c=!0,N.modElem=l(g.shift()),N.style=N.modElem.style;for(p=e.length,d=0;p>d;d++)if(m=e[d],v=N.style[m],i(m,"-")&&(m=u(m)),N.style[m]!==t){if(s||o(r,"undefined"))return a(),"pfx"==n?m:!0;try{N.style[m]=r}catch(h){}if(N.style[m]!=v)return a(),"pfx"==n?m:!0}return a(),!1}function g(e,n,t,r,s){var i=e.charAt(0).toUpperCase()+e.slice(1),l=(e+" "+P.join(i+" ")+i).split(" ");return o(n,"string")||o(n,"undefined")?v(l,n,r,s):(l=(e+" "+z.join(i+" ")+i).split(" "),f(l,n,t))}function h(e,n,r){return g(e,t,t,n,r)}var C=[],S=[],w={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){S.push({name:e,fn:n,options:t})},addAsyncTest:function(e){S.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=w,Modernizr=new Modernizr;var _=n.documentElement,b="svg"===_.nodeName.toLowerCase(),x="Moz O ms Webkit",P=w._config.usePrefixes?x.split(" "):[];w._cssomPrefixes=P;var z=w._config.usePrefixes?x.toLowerCase().split(" "):[];w._domPrefixes=z;var E={elem:l("modernizr")};Modernizr._q.push(function(){delete E.elem});var N={style:E.elem.style};Modernizr._q.unshift(function(){delete N.style}),w.testAllProps=g,w.testAllProps=h,Modernizr.addTest("backdropfilter",h("backdropFilter")),s(),r(C),delete w.addTest,delete w.addAsyncTest;for(var k=0;k<Modernizr._q.length;k++)Modernizr._q[k]();e.Modernizr=Modernizr}(window,document);    
+    /*! modernizr 3.6.0 (Custom Build) | MIT *
+     * https://modernizr.com/download/?-video-setclasses !*/
+     !function(e,n,a){function o(e,n){return typeof e===n}function s(){var e,n,a,s,t,c,r;for(var p in l)if(l.hasOwnProperty(p)){if(e=[],n=l[p],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(a=0;a<n.options.aliases.length;a++)e.push(n.options.aliases[a].toLowerCase());for(s=o(n.fn,"function")?n.fn():n.fn,t=0;t<e.length;t++)c=e[t],r=c.split("."),1===r.length?Modernizr[r[0]]=s:(!Modernizr[r[0]]||Modernizr[r[0]]instanceof Boolean||(Modernizr[r[0]]=new Boolean(Modernizr[r[0]])),Modernizr[r[0]][r[1]]=s),i.push((s?"":"no-")+r.join("-"))}}function t(e){var n=p.className,a=Modernizr._config.classPrefix||"";if(f&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+a+"no-js(\\s|$)");n=n.replace(o,"$1"+a+"js$2")}Modernizr._config.enableClasses&&(n+=" "+a+e.join(" "+a),f?p.className.baseVal=n:p.className=n)}function c(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):f?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}var i=[],l=[],r={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var a=this;setTimeout(function(){n(a[e])},0)},addTest:function(e,n,a){l.push({name:e,fn:n,options:a})},addAsyncTest:function(e){l.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=r,Modernizr=new Modernizr;var p=n.documentElement,f="svg"===p.nodeName.toLowerCase();Modernizr.addTest("video",function(){var e=c("video"),n=!1;try{n=!!e.canPlayType,n&&(n=new Boolean(n),n.ogg=e.canPlayType('video/ogg; codecs="theora"').replace(/^no$/,""),n.h264=e.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/,""),n.webm=e.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,""),n.vp9=e.canPlayType('video/webm; codecs="vp9"').replace(/^no$/,""),n.hls=e.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/,""))}catch(a){}return n}),s(),t(i),delete r.addTest,delete r.addAsyncTest;for(var d=0;d<Modernizr._q.length;d++)Modernizr._q[d]();e.Modernizr=Modernizr}(window,document);   
+     
+    let inputAdultos = document.getElementById("adultos");
+    let inputCriancas = document.getElementById("criancas");
+    let inputDuracao = document.getElementById("duracao");
+    
+    let resultado = document.getElementById("resultado");          
+   
+    function calcular() {
+    
+        console.log("Calculando...");
+    
+        let adultos = inputAdultos.value;
+        let criancas = inputCriancas.value;
+        let duracao = inputDuracao.value;
+    
+    
+        let qtdTotalCarne = carnePP(duracao) * adultos + (carnePP(duracao) / 2 * criancas);
+        let qtdTotalCerveja = cervejaPP(duracao) * adultos;
+        let qtdTotalBebidas = bebidasPP(duracao) * adultos + (bebidasPP(duracao) / 2 * criancas);
+    
+        resultado.innerHTML = `<p>${qtdTotalCarne/1000} kg de Carne</p>`          // ` Template string `
+        resultado.innerHTML += `<p>${Math.ceil(qtdTotalCerveja/355)} Latas de Cerveja</p>`
+        resultado.innerHTML += `<p>${Math.ceil(qtdTotalBebidas/2000)} Garrafas de Bebida</p>`
+    
+    }
+    
+    function carnePP(duracao) {
+    
+        if(duracao >= 6) {
+           return  650;
+        
+    } else {
+        return 400;
+        }
+        
+    }
+    
+    function cervejaPP(duracao) {
+    
+        if(duracao >= 6) {
+           return  2000;
+        
+    } else {
+        return 1200;
+        }
+        
+    }
+    
+    function bebidasPP(duracao) {
+    
+        if(duracao >= 6) {
+           return  1500;
+        
+    } else {
+        return 1000;
+        }
+        
+    }
+    
+</script> 
+</body>
+</html>
